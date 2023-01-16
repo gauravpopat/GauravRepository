@@ -8,7 +8,7 @@ class Animal {
         
   }
   public function intro() {
-    echo "The Animal is {$this->name}....."; 
+    echo "The Animal is {$this->name}"; 
   }
 }
 
