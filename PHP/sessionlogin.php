@@ -8,8 +8,7 @@
 </head>
 <body>
     <form action="./sessionwelcome.php" method="POST" target="_blank">
-
-    <input type="text" name="name" id="name" placeholder="Enter Name"> <br>
+    <input type="text" name="name" id="name" placeholder="Enter Your Name"> <br>
     <input type="password" name="password" id="password" placeholder="Enter Password"> <br>
     <input type="submit" value="Login" name="submit">
     </form>
