@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS PRACTICE</title>
+</head>
+<body>
+
+    <p id="variable"></p>
+    <p id="datatypes"></p>
+    <p id="sayhello"></p>
+    <p id="displaydate"></p>
+    <p id="displaytime"></p>
+
+    <script>
+
+        // Variables
+        let a = 10; //Let can not be redefined, value can be change (BLOCK SCOPE)
+        var b = 20; //Var can be redefined and value can be change
+        const c = 30; // can not be redefined and can not be change the value (BLOCK SCOPE)
+
+        // let a = 10; ERROR!
+        // a = 40;
+        //var b = 90;
+        // c = 40; ERROR!
+
+        document.getElementById("variable").innerHTML = `VARIABLES : ${a} ${b} ${c}`; //Template(``)
+        var d = new Date();
+        document.getElementById("displaydate").innerHTML = d.getDate() + "/" + d.getDay() + "/" + d.getFullYear();
+        document.getElementById("displaytime").innerHTML = d.getHours()+ ":" + d.getMinutes() + ":" + d.getSeconds();
+
+
+
+
+        // Numbers:
+        let length = 16;
+        let weight = 7.5;
+        document.getElementById("datatypes").innerHTML += ` ${typeof(length)}`;
+        length = length.toString();
+        document.getElementById("datatypes").innerHTML += ` ${typeof(length)}`;
+
+        // Strings:
+        let color = "Yellow";
+        let lastName = "Johnson";
+        document.getElementById("datatypes").innerHTML += ` ${typeof(color)}`;
+
+        // Booleans
+        let x = true;
+        let y = false;
+        document.getElementById("datatypes").innerHTML += ` ${typeof(x)}`;
+
+        // Object:
+        const person = {firstName:"John", lastName:"Doe"};
+        document.getElementById("datatypes").innerHTML += ` ${typeof(person)}`;
+
+        // Array object:
+        const cars = ["Saab", "Volvo", "BMW"];
+        document.getElementById("datatypes").innerHTML += ` ${typeof(cars)}`;
+
+        // Date object:
+        const date = new Date("2022-03-25");
+        document.getElementById("datatypes").innerHTML += ` ${typeof(date)}`;
+
+        // Function
+
+        function sayHello(){
+           document.getElementById("sayhello").innerHTML = "Hello!!";
+        }
+
+        let pg = `
+        hello
+        how are you
+        where are you
+        what r u doing
+        `
+        document.write(pg);
+
+        //String Methods
+
+        let text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        let textlength = text.length;
+        document.write(textlength+"<br>");
+        var text2 = "Apple, Banana, Kiwi";
+        var part = text2.slice(7, 13);
+        document.write(part+"<br>");
+        let text3 = "Apple, Banana, Kiwi";
+        let part2 = text3.substring(15);
+        document.write(part2+"<br>");
+        let text4 = "HEY HOW ARE YOU";
+        let newText = text4.replace("HOW", "WHO");
+        document.write(text4+"<br>");
+        document.write(newText+"<br>");
+
+
+
+
+        
+
+    </script>
+    <br><br><br><br><br><br>
+    <button onclick="sayHello()">ONCHANGE</button> <br>
+    <button onclick="sayHello()">ONCLICK</button> <br>
+    <button onmouseover="sayHello()">ONMOUSEOVER</button> <br>
+    <button onmouseout="sayHello()">ONMOUSEOUT</button> <br>
+    <button onkeydown="sayHello()">ONKEYDOWN</button> <br>
+    <button onload="sayHello()">ONLOAD</button> <br>
+    <button onclick="this.innerHTML = Date()">What is the date</button>
+
+
+    
+</body>
+</html>

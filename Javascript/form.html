@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+
+    <script>
+
+        function verifyPassword(){
+            var p1 = document.getElementById('pwd1').value;
+            var p2 = document.getElementById('pwd2').value;
+
+            if(p1!=p2){
+                alert("Password not matched!!");
+            }
+            else{
+                alert("Password Matched!!");
+            }
+
+        }
+
+    </script>
+
+    <style>
+        input[type=text],
+        select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type=submit] {
+            width: 100%;
+            background-color: #603fa1;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type=password] {
+            width: 100%;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+   
+        }
+
+        input[type=submit]:hover {
+            background-color: #8360c8;
+        }
+
+        div {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+    </style>
+    </style>
+
+</head>
+
+<body>
+
+    <div>
+        <form >
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="Your Name" required>
+
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lastname" placeholder="Your Last" required>
+
+            <label for="city">City</label>
+            <select id="city" name="city" required>
+                <option value="rajkot">Rajkot</option>
+                <option value="ahmedabad">Ahmedabad</option>
+                <option value="gandhinagar">Gandhinagar</option>
+            </select>
+
+            <label for="pwd">Password</label>
+            <input type="password" id="pwd1" name="pwd1" placeholder="Enter Password" required>
+
+            <label for="pwd">Retype Password</label>
+            <input type="password" id="pwd2" name="pwd2" placeholder="Retype Password" required>
+
+            <input type="submit" value="Submit" onclick="verifyPassword();">
+        </form>
+    </div>
+
+
+</body>
+
+</html>
