@@ -11,6 +11,8 @@
     <p id="variable"></p>
     <p id="datatypes"></p>
     <p id="sayhello"></p>
+    <p id="displaydate"></p>
+    <p id="displaytime"></p>
 
     <script>
 
@@ -25,6 +27,12 @@
         // c = 40; ERROR!
 
         document.getElementById("variable").innerHTML = `VARIABLES : ${a} ${b} ${c}`; //Template(``)
+        var d = new Date();
+        document.getElementById("displaydate").innerHTML = d.getDate() + "/" + d.getDay() + "/" + d.getFullYear();
+        document.getElementById("displaytime").innerHTML = d.getHours()+ ":" + d.getMinutes() + ":" + d.getSeconds();
+
+
+
 
         // Numbers:
         let length = 16;
@@ -61,6 +69,14 @@
            document.getElementById("sayhello").innerHTML = "Hello!!";
         }
 
+        let pg = `
+        hello
+        how are you
+        where are you
+        what r u doing
+        `
+        document.write(pg);
+
         //String Methods
 
         let text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -90,7 +106,7 @@
     <button onmouseout="sayHello()">ONMOUSEOUT</button> <br>
     <button onkeydown="sayHello()">ONKEYDOWN</button> <br>
     <button onload="sayHello()">ONLOAD</button> <br>
-    <button onmouseover="this.innerHTML=Date()">WHAT'S THE TIME</button> <br>
+    <button onclick="this.innerHTML = Date()">What is the date</button>
 
 
     
