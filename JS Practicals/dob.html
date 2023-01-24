@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p id="demo"></p>
+
+<script>
+document.getElementById("demo").innerHTML =
+"Browser inner window width: " + window.innerWidth + "px<br>" +
+"Browser inner window height: " + window.innerHeight + "px";
+
+</script>
+
+<button onclick="window.open()">Open New Window</button>
+<button onclick="window.open(`promises.html`)">Open Promise Page</button>
+
+</body>
+</html>
