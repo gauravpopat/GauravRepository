@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browser BOM - Browser Object Model</title>
+</head>
+
+<body>
+    <h4 id="demo"></h4>
+    <h4 id="location"></h4>
+    <script>
+        var w = window.innerWidth;
+        var h = window.innerHeight;
+        document.write(`Window Width : ${w}, Window Height : ${h}`);
+        document.getElementById("demo").innerHTML =
+            "Screen Width: " + screen.width;
+        document.getElementById("demo").innerHTML +=
+            " Screen Height: " + screen.height;
+        document.getElementById("demo").innerHTML +=
+            " Available Screen Width: " + screen.availWidth;
+        document.getElementById("demo").innerHTML +=
+            " Available Screen Height: " + screen.availHeight;
+        document.getElementById("demo").innerHTML +=
+            " Screen Color Depth: " + screen.colorDepth;
+        document.getElementById("demo").innerHTML +=
+            " Screen Pixel Depth: " + screen.pixelDepth;
+        document.write("<br><br>");
+        document.getElementById("location").innerHTML +=
+            "<br>Page location is " + window.location.href;
+        document.getElementById("location").innerHTML +=
+            "<br>Page hostname is " + window.location.hostname;
+        document.getElementById("location").innerHTML +=
+            "<br>Page path is " + window.location.pathname;
+        document.getElementById("location").innerHTML +=
+            "<br>Page protocol is " + window.location.protocol;
+        document.getElementById("location").innerHTML +=
+            "<br>Port number is " + window.location.port;
+
+        function goBack(){
+            window.history.back();
+        }
+        function goForward(){
+            window.history.forward();
+        }
+
+        document.write("<br>CookieEnabled is : "+navigator.cookieEnabled)
+        document.write("<br>Navigator App Name : "+navigator.appName);
+        document.write("<br>Navigator Code Name : "+navigator.appCodeName);
+        document.write("<br>Navigator Product Name : "+navigator.product);
+
+        var person = prompt("Hey ! What's your name ?");
+        var sayhello;
+        if(person == null || person == ""){
+            alert("User Cancelled Prompt");
+        }
+        else{
+            sayhello = "Nice to meet you "+person;
+        }
+        document.write("<br><b>"+sayhello+"</b>");
+
+    </script>
+    <br>
+    <button onclick="window.open(`maps.html`)">Open the new window</button>
+    <br>
+    <button onclick="goBack()">Back</button>
+    <br>
+    <button onclick="goForward()">Forward</button>
+</body>
+
+</html>
