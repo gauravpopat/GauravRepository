@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maps</title>
+</head>
+<body>
+    <script>
+        var mymap = new Map();
+        mymap.set("Gaurav",22);
+        mymap.set("Ajay",23);
+        mymap.set("Nimit",34);
+
+        document.write(mymap.get("Gaurav"));
+        document.write("<br>"+mymap.size);
+        mymap.delete("Ajay");
+        //document.write("<br>"+mymap.get("Ajay")); Undefined
+        //mymap.clear();
+        document.write("<br>"+mymap.size);
+        document.write("<br>"+mymap.has("Gaurav"));
+        document.write("<br>"+ typeof mymap + "<br>");
+        document.write(mymap instanceof Map);
+
+        //Foreach
+        var name = "";
+        mymap.forEach(function(value,key){
+            name += key+" "+value+"<br>";
+        })
+        document.write("<br>"+name);
+
+        //Entries
+        var name2 = "";
+        var keys = "";
+        for(const x of mymap.entries()){
+            name2 += x+"<br>";
+        }
+        for(const x of mymap.keys()){
+            keys += x+"<br>";
+        }
+        document.write("<br>"+name2);
+        document.write("<br>"+keys);
+
+        //Object as a key
+
+        //Object
+        const apples = {name: 'Apples'};
+        //Map
+        const fruit = new Map();
+        fruit.set(apples,100);
+        document.write("<br>"+fruit.get(apples));
+
+
+
+
+
+</script>
+</body>
+</html>
