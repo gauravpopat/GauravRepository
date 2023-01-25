@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strict Mode</title>
+</head>
+<body>
+    <h4>"use strict"; defines that js code should be executed in "strict mode"</h4>
+    <br>
+    <script>
+        "use strict";
+       // x = 10; Error
+       myfunction();
+       function myfunction(){
+        y = 1; //Error
+        document.write(y);
+       }
+    </script>
+
+    <p>
+        Not Allowed in Strict Mode: <br>
+        Using variable, without declaring it<br>
+        Using an object, without declaring it<br>
+        deleting a var / obj / function<br>
+        duplicate parameter name<br>
+        octal numeric literals<br>
+        octal escape characters<br>
+        writing to a readonly property<br>
+        writing to a getonly property<br>
+        deleting an undeletable property<br>
+        eval,arguments cannot be used as variable<br>
+        eval() is not Allowed to create var in the scope from which it was created<br>
+        var can not be used before it is declared<br>
+        eval() can not declare a var using the var or let keyword<br>
+    </p>
+</body>
+</html>

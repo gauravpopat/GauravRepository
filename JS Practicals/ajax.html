@@ -1,24 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
 <body>
 
-<h2>The XMLHttpRequest Object</h2>
+  <p id="text">Hey!!</p>
+  <button onclick="loadDoc()">Click here to change the text</button>
 
-<div id="demo">
-<p>Let AJAX change this text.</p>
-<button type="button" onclick="loadDoc()">Change Content</button>
-</div>
-
-<script>
-function loadDoc() {
-  const xhttp = new XMLHttpRequest();
-  xhttp.onload = function() {
-    document.getElementById("demo").innerHTML = this.responseText;
-  }
-  xhttp.open("GET", "ajax_info.txt",true);
-  xhttp.send();
-}
-</script>
-
+  <script>
+    function loadDoc(){
+      let url = "sample.txt";
+      const xhr = new XMLHttpRequest();
+      xhr.onload = function(){
+        document.getElementById('text').innerHTML = this.responseText;
+        console.log("data is loaded");
+      }
+      xhr.open('GET',url);
+      xhr.onprogress = function(){
+        console.log("On Process");
+      }
+      xhr.send();
+    }
+  </script>
+  
 </body>
 </html>
