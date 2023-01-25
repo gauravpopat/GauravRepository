@@ -1,0 +1,12 @@
+Hello 
+@Gaurav Popat
+
+Here is your practice task for PHP, Mysql, HTML, CSS, JS
+Timeline to complete this practice is 27th January EOD
+Display employee information in the tabular format and perform CRUD operation using PHP, Mysql, HTML , CSS, Bootstrap,  JQuery, Ajax
+Password should be store in encrypted format
+company table  Columns id,name
+employee table Columns id,name,email,password,phone_number,profile_image,company_id
+Let me or 
+@Mukhtar Suthar
+ know if you have any doubt.
