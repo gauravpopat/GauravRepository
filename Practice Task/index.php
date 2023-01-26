@@ -6,28 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Employee Details</title>
+    <link rel="stylesheet" href="./css/mycss.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <style>
-        .container {
-            padding: 2rem 0rem;
-        }
-
-        .form {
-            padding: 2rem 0rem;
-        }
-
-        h4 {
-            margin: 2rem 0rem 1rem;
-        }
-
-        .table-image th,
-        td {
-            vertical-align: middle;
-        }
-    </style>
 </head>
-
+" alt="
 <body>
+  
 
     <div class="container">
         <div class="row">
@@ -36,27 +20,19 @@
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">Id</th>
+                            <th>Profile</th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Company</th>
-                            <th>Profile</th>
+                           
                             <th colspan="2">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <th scope="row">1</th>
-                            <td>Gaurav</td>
-                            <td>Gaurav@Zignuts.com</td>
-                            <td>8780478205</td>
-                            <td>Zignuts</td>
-                            <td class=""></td>
-                            <td>Edit</td>
-                            <td>Delete</td>
-                        </tr>
-
-
+                        
+                           <?php include "ShowData.php" ?>
+    
                     </tbody>
                 </table>
             </div>
@@ -66,7 +42,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <form action="database.php" method="post">
+                <form action="./insertdata.php" method="POST" enctype="multipart/form-data">
                     <center><h3>Employee Information</h3></center>
                     <!-- Name input -->
                     <div class="form-outline mb-4">
@@ -109,8 +85,9 @@
                             <option>Infosys</option>
                         </select>
                     </div>
-
+                    
                     <button type="submit" id="submit" name="submit" class="btn form-control btn-primary">Submit</button>
+              
                 </form>
 
             </div>
