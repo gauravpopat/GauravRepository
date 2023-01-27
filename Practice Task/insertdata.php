@@ -4,7 +4,8 @@ include './DatabaseConnection.php';
 
         $name = $_POST['name'];
         $email = $_POST['email'];
-        $password = $_POST['password'];
+        $textpassword = $_POST['password'];
+        $password = password_hash($textpassword, PASSWORD_DEFAULT);
         $phone = $_POST['phone'];
         $company = $_POST['company'];
         $companyid = '';
@@ -32,18 +33,20 @@ include './DatabaseConnection.php';
 
 
 
-$iquery = "insert into employee(name,email,password,phone,profile,company_id) values('$name','$email','$password',$phone,'$myimage2',$companyid)";
-$result = mysqli_query($conn, $iquery);
-if($result){
-    header('location: index.php');
-    echo "<script>
-    document.getElementById('msg').innerHTML = 'Record Inserted';
-    </script>";
-}
-else{
-    echo $iquery;
-    echo $conn->error;
-}
+        $iquery = "insert into employee(name,email,password,phone,profile,company_id) values('$name','$email','$password',$phone,'$myimage2',$companyid)";
+        $result = mysqli_query($conn, $iquery);
+        if($result){
+           header('location: index.php');
+            echo "<script>
+            document.getElementById('msg').innerHTML = 'Record Inserted';
+            </script>";
+            
+        }
+        else{
+            echo $iquery;
+            echo $conn->error;
+            
+        }
 
 
 

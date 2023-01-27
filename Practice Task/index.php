@@ -10,7 +10,6 @@
         while($row = mysqli_fetch_array($result)){
             $name = $row[1];
             $email = $row[2];
-            $password = $row[3];
             $phone = $row[4];
             $profile = $row[5];
         }
@@ -20,15 +19,18 @@
     if(isset($_POST['submit'])){
         $nametext = $_POST['name'];
         $emailtext = $_POST['email'];
-        $passwordtext = $_POST['password'];
+      // $passwordtext = $_POST['password'];
         $phonetext = $_POST['phone'];
         $profiletext = $_FILES['profile']['name'];
-        $companyidtext = $_POST['company_id'];
-
-    
-        
+        $company = $_POST['company'];
+        $companyidtext = '';
+        $getid = mysqli_query($conn, "select id from company where name = '$company'");
+        while ($row = $getid->fetch_assoc()) {
+            // echo $row['id']."<br>";
+            $GLOBALS['companyidtext'] = $row['id'];
+        }
         $id = $_POST['id'];
-        $query = "update employee set name = '$nametext' where id = $id";
+        $query = "update employee set name = '$nametext', email = '$emailtext', phone = $phonetext, profile = '$profiletext', company_id = $companyidtext where id = $id";
         $result = mysqli_query($conn, $query);
     
         if(!$result){
@@ -56,7 +58,9 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <table class="table table-image table-striped">
+            <center><h4><u>Employee Information</u></h4></center>
+                <table id="mytable" class="table table-image table-striped">
+                    
                     <thead class="thead-dark">
                         <tr>
                             <th scope="col">Id</th>
@@ -90,8 +94,8 @@
                 }
                 ?>
 
-                <form action="<?php echo $url?>" method="POST" enctype="multipart/form-data">
-                    <center><h3>Employee Information</h3></center>
+                <form action="<?php echo $url?>" id="form" method="POST" enctype="multipart/form-data">
+                    <center><h4><u>Fill Up Details</u></h4></center>
                     
                     <!-- Name input -->
                     <div class="form-outline mb-4">
@@ -106,11 +110,14 @@
                         <input type="email" id="email" <?php if (isset($_GET['id'])) { ?> value="<?php echo $email?>" <?php }?> name="email" class="form-control" required />
                     </div>
 
+                    <?php
+                    if(!(isset($_GET['id']))){?>
                     <!-- Password input -->
                     <div class="form-outline mb-4">
                         <label class="form-label" for="">Password</label>
-                        <input type="password" id="password" <?php if (isset($_GET['id'])) { ?> value="<?php echo $password?>" <?php }?> name="password" class="form-control" required />
+                        <input type="password" id="password" name="password" class="form-control" required />
                     </div>
+                    <?php } ?>
 
                     <!-- Phone input -->
                     <div class="form-outline mb-4">
@@ -129,9 +136,16 @@
                         <label class="form-label" for="">Company Information</label>
                         <select class="form-select" id="company" name="company" required>
                             <option selected="true" disabled="disabled" >Select Company</option>
-                            <option>Zignuts</option>
-                            <option>Gateway</option>
-                            <option>Infosys</option>
+                            <?php
+                            
+                            $query = "select name from company";
+                            
+                            $result = mysqli_query($conn, $query);
+                            while ($row = mysqli_fetch_array($result)) {
+                                echo '<option>';
+                                echo $row['name'];
+                                echo "</option>";
+                            }?>
                         </select>
                     </div>
                     
@@ -159,10 +173,36 @@
 
 
 
-
+    <script src="./ajq.js"></script>          
     <script src="./js/javascript.js"></script>
     <script src="./js/jquery.js"></script>
     <script src="./js/bootstrap.min.js"></script>
+    <!-- <script>
+        $(document).ready(function(){
+            $('#submit').on("click",function(e){
+                e.preventDefault();
+                var ename = $('#name').val();
+                var eemail = $('#email').val();
+                var epassword = $('#password').val();
+                var ephone = $('#phone').val();
+                var eprofile = $('#profile').val();
+                var ecompany = $('#company').val();
+                
+
+                
+
+                $.ajax({
+                    url : 'insertdata.php',
+                    type : 'POST',
+                    data :{name : ename,email:eemail,password:epassword,phone:ephone,profile:eprofile,company:ecompany},
+                    success : function(result_data){
+                        alert("Data added");
+                    }
+                   
+                })
+            });
+        });
+    </script> -->
 </body>
 
 </html>
