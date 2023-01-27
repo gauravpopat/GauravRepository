@@ -4,7 +4,7 @@
 include "DatabaseConnection.php";
 
 $showdata = 
-"select employee.id,employee.name,employee.email,password,phone,profile,company.id from employee inner join company on employee.company_id = company.id";
+"select employee.id,employee.name,employee.email,password,phone,profile,company.name as 'cname' from employee inner join company on employee.company_id = company.id";
 
 $result = mysqli_query($conn, $showdata);
 
@@ -30,13 +30,13 @@ while($row = mysqli_fetch_array($result)){
     echo $row['phone'];
     echo "</td>";
     echo "<td>";
-    echo $row['id'];
+    echo $row['cname'];
     echo "</td>";
     echo "<td>";
-    echo "<a href = '' id = 'atag'>Edit</a>";
+    echo "<a href = './index.php?id=$row[0]' id = 'atag'>Edit</a>";
     echo "</td>";
     echo "<td>";
-    echo "<a href = '' id = 'atag'>Delete</a>";
+    echo "<a href = './deletedata.php?id=$row[0]' id = 'atag'>Delete</a>";
     echo "</td>";
     echo "</tr>";
 }
