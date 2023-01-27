@@ -1,6 +1,6 @@
 <?php
 
-include './DatabaseConnection.php';
+        include './DatabaseConnection.php';
 
         $name = $_POST['name'];
         $email = $_POST['email'];
