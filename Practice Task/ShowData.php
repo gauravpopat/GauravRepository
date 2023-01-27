@@ -16,9 +16,9 @@ while($row = mysqli_fetch_array($result)){
     echo $row['id'];
     echo "</th>";
     echo "<td class='w-25'>";
-    echo '<img src="./images/';
-    echo $row['profile'];
-    echo ' " class="img-responsive">';
+    // echo '<img src="./images/';
+    // echo $row['profile'];
+    // echo ' " class="img-responsive">';
     echo"</td>";
     echo "<td>";
     echo $row['name'];

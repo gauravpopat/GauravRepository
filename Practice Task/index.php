@@ -2,7 +2,7 @@
 
 include_once 'DatabaseConnection.php';
 
-$id = '';
+/* $id = '';
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $query = "select * from employee where id = $id";
@@ -36,7 +36,7 @@ if (isset($_POST['submit'])) {
         echo $query;
     }
 }
-
+*/
 
 ?>
 
@@ -75,9 +75,7 @@ if (isset($_POST['submit'])) {
                             <th colspan="2">Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
-
-                        <?php include "ShowData.php" ?>
+                    <tbody id="filldata">
 
                     </tbody>
                 </table>
@@ -95,8 +93,8 @@ if (isset($_POST['submit'])) {
                     $url = "./insertdata.php";
                 }
                 ?>
-
-                <form action="<?php echo $url ?>" id="form" method="POST" enctype="multipart/form-data">
+             
+                <form id="form"  enctype="multipart/form-data">
                     <center>
                         <h4><u>Fill Up Details</u></h4>
                     </center>
@@ -175,14 +173,65 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
     </div>
+                    
+    
 
 
 
-    <script src="./ajq.js"></script>
-    <script src="./js/javascript.js"></script>
+
+
+
+    
+    
     <script src="./js/jquery.js"></script>
     <script src="./js/bootstrap.min.js"></script>
 
+    <script>
+
+
+
+
+        $(document).ready(function(e){
+
+            function displayData(){
+                $.ajax({
+                    url : 'showdata.php',
+                    type : 'post',
+                    success : function(result_data){
+                        $('#filldata').html(result_data);
+                    }
+                });
+
+            }
+            displayData();
+
+           $('#submit').on("click",function(e)
+           {
+            e.preventDefault();
+           // alert('Click');
+            var name = $("#name").val();
+            var email = $("#email").val();
+            var phone = $("#phone").val();
+            var password = $("#password").val();
+            var company = $("#company").val();
+            $.ajax({
+                url: "insertdata.php",
+                type: "POST",
+                data: {
+                    name:name,
+                    email: email,
+                    phone: phone,
+                    password: password,
+                    company: company
+                },
+                success: function(result_data){
+                    displayData();
+                }
+            });
+           })
+        });
+
+    </script>
     
 
 </body>
