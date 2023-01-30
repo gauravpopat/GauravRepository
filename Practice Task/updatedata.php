@@ -3,7 +3,7 @@
 include 'DatabaseConnection.php';
 if(isset($_POST['updateid'])){
     $id = $_POST['updateid'];
-    $sql = "select employee.id,company.name,employee.name,email,phone,profile from employee join company on employee.company_id=company.id where employee.id = $id";
+    $sql = "select employee.id,company.name as 'company',employee.name as 'name',email,phone,profile from employee join company on employee.company_id=company.id where employee.id = $id";
     $result = mysqli_query($conn,$sql);
     $response = array(); 
     $response = mysqli_fetch_assoc($result);
@@ -28,8 +28,9 @@ else if(isset($_POST['hiddendata'])){
             $GLOBALS['company_id'] = $row['id'];
         }
         
-
-        $updateq = "update employee set name = '$name', email = '$email', phone = $phone, profile = '$folder', company_id = $company_id where id = $uid";
+        
+            $updateq = "update employee set name = '$name', email = '$email', phone = $phone, profile = '$folder', company_id = $company_id where id = $uid";
+        
 
         $updateresult = mysqli_query($conn,$updateq);
 

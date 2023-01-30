@@ -1,4 +1,5 @@
 
+
 <?php
 
 include 'DatabaseConnection.php';
@@ -7,7 +8,7 @@ include 'DatabaseConnection.php';
 ?>
 
 <div class="table-responsive">
-        <table class="table table-striped">
+        <table class="table table-hover table-striped">
             <thead class="table-dark">
                 <tr>
                     <th scope="col">ID</th>
@@ -38,8 +39,8 @@ while ($row = mysqli_fetch_array($selectresult)) {
     echo "<td>" . $row['email'] ." </td>";
     echo "<td>" . $row['phone'] ." </td>";
     echo "<td>" . $row['cname'] ." </td>";
-    echo "<td><button class='btn btn-dark' onclick='updateUser(".$row['id'].")'>Update</td>";
-    echo "<td><button class='btn btn-danger' onclick='deleteUser(".$row['id'].")'>Delete</td>";
+    echo "<td><button class='btn btn-dark form-control' id='btn' style='margin:2%;' onclick='updateUser(".$row['id'].")'>Update</td>";
+    echo "<td><button class='btn btn-danger form-control' style='margin:2%;' onclick='deleteUser(".$row['id'].")'>Delete</td>";
     echo "</tr>";
 }
 ?>

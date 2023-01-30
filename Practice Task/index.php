@@ -1,7 +1,10 @@
 <?php
-include 'DatabaseConnection.php';   
-if(isset($_POST['id']))
-$name = $_POST['name'];
+include 'DatabaseConnection.php';
+if (isset($_POST['id'])) {
+
+    $name = $_POST['name'];
+}
+
 
 $selectcompany = "select name from company";
 $getresult = mysqli_query($conn, $selectcompany);
@@ -18,7 +21,7 @@ $getresult = mysqli_query($conn, $selectcompany);
     <link rel="stylesheet" href="./css/bootstrap.min.css">
 </head>
 
-<body>
+<body style="margin: 4%;">
     <!-- Modal -->
     <!-- Button trigger modal -->
     <div class="row h-100 d-flex align-items-center justify-content-center">
@@ -30,28 +33,27 @@ $getresult = mysqli_query($conn, $selectcompany);
   <br><br><br>
 
 
-
     <!-- Modal -->
     <div class="modal fade" id="employeemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Fill the information</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form name="myform" method="POST"  id="myform" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control"  id="name" name="name" placeholder="Enter Your Name" value="">
+                            <input type="text" class="form-control"  id="name" name="name" placeholder="Enter Your Name" value="" required>
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter Your Email">
+                            <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Enter Your Email" required>
                             <label for="phone">Phone</label>
-                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter Your Phone">
+                            <input type="tel" pattern="[0-9]{10}" required class="form-control" id="phone" name="phone" placeholder="Enter Your Phone">
                             <label for="password">Password</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Your Password">
+                            <input type="password" class="form-control" required id="password" name="password" placeholder="Enter Your Password">
                             <label for="company">Select Company:</label>
-                            <select name="company" id="company">
+                            <select name="company" id="company" required>
                                 <?php
                                 while ($row = mysqli_fetch_array($getresult)) {
                                     ?>
@@ -61,7 +63,7 @@ $getresult = mysqli_query($conn, $selectcompany);
                             </select>
                             <br> <br>
                             <label for="file">Enter your profile</label>
-                            <input type="file" class="form-control" name="file" id="file">
+                            <input type="file" class="form-control" required name="file" id="file">
                             <input type="submit" name="submit" id="submit" class="btn btn-dark"></button>
                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                     </form>
@@ -78,21 +80,21 @@ $getresult = mysqli_query($conn, $selectcompany);
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <h4 class="modal-title" id="exampleModalLabel">Update Data</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form name="updateform" method="POST"  id="updateform" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input type="text" class="form-control"  id="updatename" name="updatename" placeholder="Enter Your Name">
+                            <input type="text" class="form-control"  id="updatename" name="updatename" placeholder="Enter Your Name" required>
                             <label for="email">Email</label>
-                            <input type="email" class="form-control" name="updateemail" id="updateemail" aria-describedby="emailHelp" placeholder="Enter Your Email">
+                            <input type="email" required class="form-control" name="updateemail" id="updateemail" aria-describedby="emailHelp" placeholder="Enter Your Email">
                             <label for="phone">Phone</label>
-                            <input type="tel" class="form-control" id="updatephone" name="updatephone" placeholder="Enter Your Phone">
-                            
+                            <input type="tel" required autofocus title="Please enter valid 10 digit number" pattern="[0-9]{10}" class="form-control" id="updatephone" name="updatephone" placeholder="Enter Your Phone">
+
                             <label for="company">Select Company:</label>
-                            <select name="updatecompany" id="updatecompany">
+                            <select name="updatecompany" id="updatecompany" required>
                             <?php
                             $getcompany = "select name from company";
                             $newresult = mysqli_query($conn, $getcompany);
@@ -103,9 +105,11 @@ $getresult = mysqli_query($conn, $selectcompany);
                                 </option>
                             <?php }?>
                             </select>
+
+
                             <br> <br>
                             <label for="file">Enter your profile</label>
-                            <input type="file" class="form-control" name="updatefile" id="updatefile">
+                            <input type="file" class="form-control" name="updatefile" id="updatefile" required>
                             <input type="submit" name="update" id="update" value="Update" class="btn btn-dark"></button>
                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                             <input type="hidden" name="hiddendata" id="hiddendata">
@@ -168,6 +172,7 @@ $getresult = mysqli_query($conn, $selectcompany);
             });
 
         function deleteUser(deleteid){
+            if(confirm("Are you sure ?")==true){
             $.ajax({
                 url: 'deletedata.php',
                 type: 'POST',
@@ -179,6 +184,7 @@ $getresult = mysqli_query($conn, $selectcompany);
                     showData();
                 }
             });
+            }
         }
 
         function updateUser(updateId){
@@ -194,6 +200,7 @@ $getresult = mysqli_query($conn, $selectcompany);
                 url : "updatedata.php",
                 type : "POST",
                 data : {updateid:updateId},
+                
                 success : function(data)
                 {
                     
@@ -203,7 +210,7 @@ $getresult = mysqli_query($conn, $selectcompany);
                     $('#updateemail').val(userid.email);
                     $('#updatephone').val(userid.phone);
                     $('#updatecompany').val(userid.company);
-                    $('#updateprofile').val(userid.profile);
+                    $('#updatefile').val(userid.profile);
                 }
             });
 
